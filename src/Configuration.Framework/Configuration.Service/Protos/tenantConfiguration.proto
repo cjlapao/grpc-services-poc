@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "Configuration.Service";
+
+package configuration;
+
+service TenantConfiguration {
+  rpc GetFlag (TenantFlagRequest) returns (TenantFlagReply);
+}
+
+message TenantFlagRequest {
+  string flagName = 1;
+}
+
+message TenantFlagReply {
+  string key = 1;
+  string value = 2;
+}

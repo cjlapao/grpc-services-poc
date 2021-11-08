@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata: 
+  name: configuration-service-config
+  namespace: grpc-playground
+data: 
+  ASPNETCORE_ENVIRONMENT: {{ .Values.ASPNETCORE_ENVIRONMENT }}
+  GLOBAL_DATABASE_NAME: {{ .Values.GLOBAL_DATABASE_NAME }}

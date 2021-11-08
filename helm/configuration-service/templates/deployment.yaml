@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configuration-service
+  namespace: grpc-playground
+  labels:
+    app: configuration-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: configuration-service
+  template:
+    metadata:
+      labels:
+        app: configuration-service
+    spec:
+      containers:
+        - name: configuration-pod
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+            - name: https
+              containerPort: 443
+              protocol: TCP
+          env:
+            - name: "ASPNETCORE_ENVIRONMENT"
+              valueFrom:
+                configMapKeyRef: 
+                  name: configuration-service-config
+                  key: ASPNETCORE_ENVIRONMENT 
+
+            - name: "GLOBAL_DATABASE_NAME"
+              valueFrom:
+                configMapKeyRef: 
+                  name: configuration-service-config
+                  key: GLOBAL_DATABASE_NAME 
+
+            - name: "MONGODB_CONNECTION_STRING"
+              valueFrom:
+                secretKeyRef: 
+                  name: configuration-service-secrets
+                  key: MONGODB_CONNECTION_STRING 
+
+            - name: "SERVICE_BUS_CONNECTION_STRING"
+              valueFrom:
+                secretKeyRef: 
+                  name: configuration-service-secrets
+                  key: SERVICE_BUS_CONNECTION_STRING 

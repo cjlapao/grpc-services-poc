@@ -1,0 +1,51 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Configuration",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build Config",
+      "program": "${workspaceFolder}/src/Configuration.Framework/Configuration.Service/bin/Debug/net5.0/Configuration.Service.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Configuration.Framework/Configuration.Service/",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://::5010;https://::5011",
+        "MONGODB_CONNECTION_STRING": "mongodb://mongodb.local-cluster.internal:27017/?readPreference=primaryPreferred&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+        "GLOBAL_DATABASE_NAME": "GlobalOps",
+        "SERVICE_BUS_CONNECTION_STRING": ""
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "Launch Environment Management",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build EMS",
+      "program": "${workspaceFolder}/src/Environment.Management/Environment.Management.Service/bin/Debug/net5.0/Environment.Management.Service.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Environment.Management/Environment.Management.Service",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://::5020;https://::5021",
+        "CONFIGURATION_SERVICE_URL": "https://localhost:5011"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach"
+    }
+  ]
+}

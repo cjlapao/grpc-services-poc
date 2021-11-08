@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Protobuf Include="Protos\globalConfiguration.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\tenantConfiguration.proto" GrpcServices="Server" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.40.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Configuration.Startup\Configuration.Startup.csproj" />
+    <ProjectReference Include="..\Configuration.Domain\Configuration.Domain.csproj" />
+  </ItemGroup>
+</Project>

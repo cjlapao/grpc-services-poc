@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "Configuration.Service";
+
+package configuration;
+
+
+service Global {
+  rpc GetFlag (GlobalFlagRequest) returns (GlobalFlagReply);
+  rpc SetFlag (GlobalSetFlagRequest) returns (GlobalFlagReply);
+}
+
+message GlobalFlagRequest {
+  string flagName = 1;
+}
+
+message GlobalSetFlagRequest {
+  string key = 1;
+  string value = 2;
+}
+message GlobalFlagReply {
+  string key = 1;
+  string value = 2;
+}

@@ -1,0 +1,7 @@
+ASPNETCORE_ENVIRONMENT: "Production"
+MONGODB_CONNECTION_STRING: ""
+GLOBAL_DATABASE_NAME: "GlobalOps"
+SERVICE_BUS_CONNECTION_STRING: ""
+image:
+  name: ""
+  tag: "latest"

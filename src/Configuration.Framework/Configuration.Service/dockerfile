@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+
+# Copy the context to the build image
+COPY . .
+WORKDIR /src/Configuration.Framework
+
+# Building and publishing code
+RUN dotnet publish "./Configuration.Service/Configuration.Service.csproj" -c Release -o /app/publish --runtime linux-x64
+
+# Creating the final image with only the published code 
+FROM base AS final
+WORKDIR /app
+EXPOSE 80
+
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["./Configuration.Service"]

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: configuration-service
+  namespace: grpc-playground
+  labels:
+    app: configuration-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: https
+      protocol: TCP
+      name: https
+  selector:
+    app: configuration-service
