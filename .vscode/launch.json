@@ -8,7 +8,7 @@
       "name": "Launch Configuration",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build Config",
+      "preLaunchTask": "build Config Service",
       "program": "${workspaceFolder}/src/Configuration.Framework/Configuration.Service/bin/Debug/net5.0/Configuration.Service.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/Configuration.Framework/Configuration.Service/",
